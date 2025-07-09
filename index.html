@@ -3,186 +3,433 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Undangan Spesial</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+    <title>Happy Birthday My Love</title>
     <style>
-      body {
-        background-image: url("letter3.jpg");
-        background-size: cover;
-        background-position: center;
-        font-family: "Montserrat", sans-serif;
-        color: #fcd9d9;
-        text-align: center;
-        padding: 50px;
-        margin: 0;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      :root {
+        --deep-maroon: #6c011c;
+        --black: #1a1a1a;
+        --gold: #e2b72c;
       }
 
-      .card {
-        max-width: 580px;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      body {
+        background: url("letter3.jpg") no-repeat center center fixed;
+        background-size: cover;
+        color: white;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      .container {
+        max-width: 800px;
         margin: 0 auto;
-        padding: 40px 30px;
-        background-color: rgba(101, 57, 70, 0.773);
-        border-radius: 18px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        backdrop-filter: blur(2px);
-        border: 1px solid rgba(255, 125, 164, 0.3);
+        padding: 2rem;
+        text-align: center;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(222, 148, 148, 0.208);
+        /* backdrop-filter: blur(2px); */ /* Commented out or removed */
       }
 
       h1 {
-        font-family: "Dancing Script", cursive;
-        font-size: 2.8em;
-        color: #ce92a0d8;
-        margin-bottom: 25px;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-        line-height: 1.2;
+        color: var(--gold);
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
       }
 
-      p {
-        font-size: 1.15em;
-        line-height: 1.7;
-        margin-bottom: 18px;
-        font-weight: 500;
+      .card {
+        background-color: var(--deep-maroon);
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        width: 100%;
+        max-width: 600px;
+        position: relative;
+        overflow: hidden;
       }
 
-      .details {
-        margin: 30px 0;
-        font-size: 1.15em;
-        background: rgba(232, 67, 147, 0.08);
-        padding: 20px;
-        border-radius: 12px;
-        border-left: 4px solid #570606;
+      .question {
+        margin-bottom: 2rem;
+        font-size: 1.2rem;
+        line-height: 1.6;
       }
 
-      .detail-item {
-        margin: 14px 0;
+      .hints {
         display: flex;
-        align-items: center;
         justify-content: center;
-        gap: 12px;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
       }
 
-      .signature {
-        font-family: "Dancing Script", cursive;
-        font-size: 1.8em;
-        margin-top: 35px;
-        color: #ce92a0d8;
-        letter-spacing: 1px;
-      }
-
-      .hearts {
-        color: #570606;
-        font-size: 1.8em;
-        margin: 25px 0;
-        animation: pulse 1.5s infinite;
+      .hint {
+        background-color: rgba(0, 0, 0, 0.3);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
         cursor: pointer;
+        transition: all 0.3s;
       }
 
-      .qr-container {
-        margin: 20px auto;
-        max-width: 200px;
+      .hint:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      input {
+        width: 80%;
+        padding: 1rem;
+        border-radius: 10px;
+        border: none;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        background-color: rgba(255, 255, 255, 0.9);
+      }
+
+      button {
+        background-color: var(--gold);
+        color: var(--black);
+        border: none;
+        padding: 0.8rem 2rem;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-top: 1rem;
+      }
+
+      button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+      }
+
+      .envelope {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 80px;
+        height: 60px;
+        background-color: var(--gold);
+        border-radius: 5px;
+        cursor: pointer;
         display: none;
-        animation: fadeIn 0.5s ease-out;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s;
+        z-index: 100;
       }
 
-      .qr-message {
-        font-size: 0.9em;
-        margin-top: 10px;
-        color: #666;
-        font-style: italic;
+      .envelope:hover {
+        transform: translateY(-5px);
       }
 
-      @keyframes pulse {
+      .envelope::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-right: 40px solid transparent;
+        border-left: 40px solid transparent;
+        border-top: 30px solid var(--gold);
+        transform: rotate(180deg);
+        transform-origin: 50% 0%;
+        transition: transform 0.4s ease;
+      }
+
+      .envelope.open::before {
+        transform: rotateX(180deg);
+      }
+
+      .letter {
+        position: fixed;
+        bottom: -400px;
+        right: 2rem;
+        width: 300px;
+        background: linear-gradient(to bottom, #ffadad, #f8e68c);
+        border-radius: 10px;
+        padding: 2rem;
+        color: #333;
+        transition: all 0.5s ease-in-out;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        z-index: 99;
+        display: none;
+      }
+
+      .letter.show {
+        bottom: 8rem;
+        display: block;
+      }
+
+      .confetti {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 1000;
+        display: none;
+      }
+
+      .confetti-piece {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: var(--gold);
+        opacity: 0;
+      }
+
+      .next-button {
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--gold);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s;
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .next-button.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .next-button:hover {
+        transform: translateX(-50%) scale(1.1);
+      }
+
+      .next-button::before {
+        content: "";
+        width: 20px;
+        height: 20px;
+        border-right: 3px solid var(--black);
+        border-bottom: 3px solid var(--black);
+        transform: rotate(-45deg);
+        margin-bottom: -5px;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .romantic-image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid var(--gold);
+        margin: 1rem auto;
+        display: block;
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      @keyframes celebrate {
         0% {
           transform: scale(1);
         }
-        50% {
+        25% {
           transform: scale(1.2);
+        }
+        50% {
+          transform: scale(1);
+        }
+        75% {
+          transform: scale(1.1);
         }
         100% {
           transform: scale(1);
         }
       }
 
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .emoji {
-        font-size: 1.3em;
-        vertical-align: middle;
-      }
-
-      .secret-button {
-        background: transparent;
-        border: none;
-        color: #ce92a0d8;
-        text-decoration: underline;
-        cursor: pointer;
-        font-size: 1em;
-        margin: 15px 0;
-        font-weight: 600;
+      .celebrate {
+        animation: celebrate 0.5s ease-in-out;
       }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <div class="card">
-      <h1>Hi by <span class="emoji">💗</span></h1>
+    <div class="container">
+      <div class="card">
+        <img src="letter4.jpg" alt="Romantic couple silhouette against sunset sky" class="romantic-image" />
+        <h1>Happy Birthday My Love!</h1>
 
-      <p style="font-size: 1.3em">It's your special day!</p>
+        <div class="question-section" id="question-section">
+          <p class="question">Do you remember where we had our first date? Try to guess!</p>
+          <div class="hints">
+            <div class="hint" onclick="showHint(1)">Hint 1</div>
+            <div class="hint" onclick="showHint(2)">Hint 2</div>
+          </div>
+          <input type="text" id="answer-input" placeholder="Type your answer here..." />
+          <button onclick="checkAnswer()">Submit</button>
 
-      <div class="details">
-        <div class="detail-item">📍 Giorno's Pizzeria</div>
-        <div class="detail-item">📆 Sabtu, 12 Juli 2025</div>
-        <div class="detail-item">🕖 Pukul 19.00 WIB</div>
-        <div class="detail-item">👔 Dresscode: Black / Dark Grey</div>
+          <div class="hidden" id="hint1">
+            <p>sagan</p>
+          </div>
+          <div class="hidden" id="hint2">
+            <p>start with b</p>
+          </div>
+        </div>
       </div>
 
-      <p>Pokoknya kamu tinggal jemput aku, terus kita langsung berangkat yaa</p>
-      <p>Semua udah aku siapin</p>
-      <p>Aku cuma pengen rayain kamu meskipun udah bukan hari h ultah kamu hiks</p>
+      <div class="confetti" id="confetti"></div>
 
-      <div class="hearts" id="showQR">💖</div>
+      <div class="envelope" id="envelope"></div>
 
-      <div class="qr-container" id="qrCode">
-        <!-- Replace with your actual QR code image -->
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=IniPesanRahasiaUntukKamu" alt="QR Code Spesial" />
-        <div class="qr-message">Scan untuk kejutan spesial!</div>
+      <div class="letter" id="letter">
+        <h3>FOR YOU...</h3>
+        <p>Kamu yang selalu satu-dua langkah lebih dulu dariku dalam usia, dalam langkah, mungkin dalam perencanaan hidup, dan terakhir dalam waktu yang makin terasa sempit.</p>
+
+        <p>Tahun ini, akan banyak hal yang berubah. Kamu akan lulus, sibuk dengan dunia barumu, dan mungkin, membuat waktu kita ga sebanyak kemarin.</p>
+
+        <p>Tapi tak apa. Aku belajar untuk tidak mengukur kasih dari seberapa sering kita bertemu, melainkan dari seberapa tenang hati ini ketika memikirkanmu.</p>
+
+        <p>Hari ini tentang kamu. Tentang seseorang yang selalu aku syukuri kehadirannya. Aku ingin kamu terus berjalan sesuai yang kamu mau, menyusun mimpi satu per satu, tanpa perlu khawatir aku akan pergi.</p>
+
+        <p>Aku akan tetap disini, mendukungmu dalam riuhku dan dalam doa-doa yang tak pernah ribut.</p>
+
+        <p>Semoga di umurmu yang baru, kamu diberi kemudahan untuk hal hal yang kamu perjuangkan, dan kekuatan untuk hal hal yang harus kamu lepaskan.</p>
+
+        <p>Selamat bertambah usia, Aku bangga padamu dan dengan cara yang mungkin tak selalu bisa aku ucap setiap hari.</p>
+
+        <p>You've got a place in me that won't move</p>
+
+        <div class="signature">With love,<br />Ninis</div>
       </div>
 
-      <button class="secret-button" id="toggleQR">Tampilkan QR Code Rahasia</button>
-
-      <div class="signature">With all my love,<br />[Ninis]</div>
+      <div class="next-button" id="next-button"></div>
     </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const showQR = document.getElementById("showQR");
-        const toggleQR = document.getElementById("toggleQR");
-        const qrCode = document.getElementById("qrCode");
+      let hintsShown = 0;
 
-        // Toggle QR when heart is clicked
-        showQR.addEventListener("click", function () {
-          qrCode.style.display = qrCode.style.display === "block" ? "none" : "block";
-          toggleQR.textContent = qrCode.style.display === "block" ? "Sembunyikan QR Code" : "Tampilkan QR Code Rahasia";
-        });
+      function showHint(number) {
+        hintsShown++;
+        document.getElementById(`hint${number}`).classList.remove("hidden");
 
-        // Toggle QR when button is clicked
-        toggleQR.addEventListener("click", function () {
-          qrCode.style.display = qrCode.style.display === "block" ? "none" : "block";
-          this.textContent = qrCode.style.display === "block" ? "Sembunyikan QR Code" : "Tampilkan QR Code Rahasia";
-        });
+        if (hintsShown === 2) {
+          document.querySelector(".hints").style.opacity = "0.5";
+          document.querySelector(".hints").style.pointerEvents = "none";
+        }
+      }
+
+      function checkAnswer() {
+        const answer = document.getElementById("answer-input").value.trim().toLowerCase();
+        const correctAnswer = "bellywise";
+
+        if (answer === correctAnswer) {
+          // Celebrate animation
+          document.getElementById("question-section").classList.add("celebrate");
+
+          // Confetti effect
+          createConfetti();
+
+          // Show envelope after delay
+          setTimeout(() => {
+            document.getElementById("envelope").style.display = "flex";
+          }, 1000);
+
+          // Show next button
+          setTimeout(() => {
+            document.getElementById("next-button").classList.add("show");
+          }, 2000);
+        } else {
+          alert("Almost! Try again or check the hints.");
+        }
+      }
+
+      function createConfetti() {
+        const confettiContainer = document.getElementById("confetti");
+        confettiContainer.style.display = "block";
+
+        const colors = ["#D4AF37", "#800020", "#FFFFFF", "#FFD700"];
+
+        for (let i = 0; i < 100; i++) {
+          const confetti = document.createElement("div");
+          confetti.classList.add("confetti-piece");
+
+          // Random properties
+          const size = Math.random() * 10 + 5;
+          const color = colors[Math.floor(Math.random() * colors.length)];
+
+          confetti.style.width = `${size}px`;
+          confetti.style.height = `${size}px`;
+          confetti.style.backgroundColor = color;
+          confetti.style.left = `${Math.random() * 100}%`;
+          confetti.style.top = `${Math.random() * 100}%`;
+
+          // Animation
+          const animationDuration = Math.random() * 3 + 2;
+          confetti.style.animation = `fall ${animationDuration}s linear forwards`;
+
+          // Create CSS for fall animation
+          const style = document.createElement("style");
+          style.innerHTML = `
+                    @keyframes fall {
+                        0% {
+                            transform: translateY(-100vh) rotate(0deg);
+                            opacity: 1;
+                        }
+                        100% {
+                            transform: translateY(100vh) rotate(360deg);
+                            opacity: 0;
+                        }
+                    }
+                `;
+          document.head.appendChild(style);
+
+          confettiContainer.appendChild(confetti);
+        }
+
+        // Remove confetti after animation
+        setTimeout(() => {
+          confettiContainer.style.display = "none";
+          confettiContainer.innerHTML = "";
+        }, 3000);
+      }
+
+      document.getElementById("envelope").addEventListener("click", function () {
+        this.classList.add("open");
+        setTimeout(() => {
+          document.getElementById("letter").classList.add("show");
+        }, 400);
+      });
+
+      document.getElementById("next-button").addEventListener("click", function () {
+        window.location.href = "undangan.html"; // Arahkan ke undangan.html
       });
     </script>
   </body>
 </html>
+
+```
