@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Undangan Spesial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        background-image: url("letter3.jpg");
+        background-size: cover;
+        background-position: center;
+        font-family: "Montserrat", sans-serif;
+        color: #fcd9d9;
+        text-align: center;
+        padding: 50px;
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .card {
+        max-width: 580px;
+        margin: 0 auto;
+        padding: 40px 30px;
+        background-color: rgba(101, 57, 70, 0.773);
+        border-radius: 18px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(2px);
+        border: 1px solid rgba(255, 125, 164, 0.3);
+      }
+
+      h1 {
+        font-family: "Dancing Script", cursive;
+        font-size: 2.8em;
+        color: #ce92a0d8;
+        margin-bottom: 25px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        line-height: 1.2;
+      }
+
+      p {
+        font-size: 1.15em;
+        line-height: 1.7;
+        margin-bottom: 18px;
+        font-weight: 500;
+      }
+
+      .details {
+        margin: 30px 0;
+        font-size: 1.15em;
+        background: rgba(232, 67, 147, 0.08);
+        padding: 20px;
+        border-radius: 12px;
+        border-left: 4px solid #570606;
+      }
+
+      .detail-item {
+        margin: 14px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .signature {
+        font-family: "Dancing Script", cursive;
+        font-size: 1.8em;
+        margin-top: 35px;
+        color: #ce92a0d8;
+        letter-spacing: 1px;
+      }
+
+      .hearts {
+        color: #570606;
+        font-size: 1.8em;
+        margin: 25px 0;
+        animation: pulse 1.5s infinite;
+        cursor: pointer;
+      }
+
+      .qr-container {
+        margin: 20px auto;
+        max-width: 200px;
+        display: none;
+        animation: fadeIn 0.5s ease-out;
+      }
+
+      .qr-message {
+        font-size: 0.9em;
+        margin-top: 10px;
+        color: #666;
+        font-style: italic;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .emoji {
+        font-size: 1.3em;
+        vertical-align: middle;
+      }
+
+      .secret-button {
+        background: transparent;
+        border: none;
+        color: #ce92a0d8;
+        text-decoration: underline;
+        cursor: pointer;
+        font-size: 1em;
+        margin: 15px 0;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Hi by <span class="emoji">💗</span></h1>
+
+      <p style="font-size: 1.3em">It's your special day!</p>
+
+      <div class="details">
+        <div class="detail-item">📍 Giorno's Pizzeria</div>
+        <div class="detail-item">📆 Sabtu, 12 Juli 2025</div>
+        <div class="detail-item">🕖 Pukul 19.00 WIB</div>
+        <div class="detail-item">👔 Dresscode: Black / Dark Grey</div>
+      </div>
+
+      <p>Pokoknya kamu tinggal jemput aku, terus kita langsung berangkat yaa</p>
+      <p>Semua udah aku siapin</p>
+      <p>Aku cuma pengen rayain kamu meskipun udah bukan hari h ultah kamu hiks</p>
+
+      <div class="hearts" id="showQR">💖</div>
+
+      <div class="qr-container" id="qrCode">
+        <!-- Replace with your actual QR code image -->
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=IniPesanRahasiaUntukKamu" alt="QR Code Spesial" />
+        <div class="qr-message">Scan untuk kejutan spesial!</div>
+      </div>
+
+      <button class="secret-button" id="toggleQR">Tampilkan QR Code Rahasia</button>
+
+      <div class="signature">With all my love,<br />[Ninis]</div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const showQR = document.getElementById("showQR");
+        const toggleQR = document.getElementById("toggleQR");
+        const qrCode = document.getElementById("qrCode");
+
+        // Toggle QR when heart is clicked
+        showQR.addEventListener("click", function () {
+          qrCode.style.display = qrCode.style.display === "block" ? "none" : "block";
+          toggleQR.textContent = qrCode.style.display === "block" ? "Sembunyikan QR Code" : "Tampilkan QR Code Rahasia";
+        });
+
+        // Toggle QR when button is clicked
+        toggleQR.addEventListener("click", function () {
+          qrCode.style.display = qrCode.style.display === "block" ? "none" : "block";
+          this.textContent = qrCode.style.display === "block" ? "Sembunyikan QR Code" : "Tampilkan QR Code Rahasia";
+        });
+      });
+    </script>
+  </body>
+</html>
